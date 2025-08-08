@@ -7,7 +7,7 @@ import ContactPage from './Pages/ContactPage'
 import LogainPage from './Pages/LogainPage'
 import Sign_Up from './Pages/Sign_Up'
 import Service from './Pages/Service'
-import ProductDetails from './Types/ProductDetails'
+import ProductDetails from './Pages/ProductDetails'
 import Footer from './Components/Footer'
 
 function App() {

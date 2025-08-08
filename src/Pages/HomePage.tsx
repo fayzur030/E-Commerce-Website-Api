@@ -20,7 +20,7 @@ const HomePage = () => {
     fetchProduct()
   }, [])
   return (
-    <div className='bg-[#F6F1RD] max-w-6xl mx-auto rounded-lg shadow p-4 flex-1 text-black'>
+    <div className='bg-[#F6F1RD] max-w-7xl mx-auto rounded-lg shadow p-4 flex-1 text-black'>
       <section>
         <CircularDemo />
       </section>

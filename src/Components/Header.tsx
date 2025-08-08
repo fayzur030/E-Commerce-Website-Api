@@ -1,10 +1,10 @@
-import NavBar from '../Pages/SideBar'
+import NavBar from '../Pages/NavBar'
 
 const Header = () => {
   return (
-    <>
+    <div>
       <NavBar />
-    </>
+    </div>
   )
 }
 
