@@ -1,5 +1,7 @@
 // Login.tsx
 
+import { Link } from 'react-router-dom'
+
 const LoginPage = () => {
   return (
     <div className='min-h-screen flex items-center justify-center bg-gray-100 px-4'>
@@ -50,9 +52,9 @@ const LoginPage = () => {
 
         <p className='mt-4 text-center text-gray-600'>
           Don't have an account?{' '}
-          <a href='/signup' className='text-blue-600 hover:underline'>
+          <Link to='/sign-up' className='text-blue-600 hover:underline'>
             Sign Up
-          </a>
+          </Link>
         </p>
       </div>
     </div>

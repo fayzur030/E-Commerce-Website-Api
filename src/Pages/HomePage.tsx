@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import type { Product } from '../Types/productType'
 import ProductCart from '../Components/ProductCart'
-import CircularDemo from '../Components/carousel'
+import CircularDemo from '../Components/Carousel'
+
 
 const HomePage = () => {
   const [product, setProduct] = useState<Product[]>([])

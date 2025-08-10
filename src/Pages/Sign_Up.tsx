@@ -1,4 +1,4 @@
-// SignUp.tsx
+import { Link } from 'react-router-dom'
 
 const SignUp = () => {
   return (
@@ -8,6 +8,7 @@ const SignUp = () => {
           Create an Account
         </h2>
         <form noValidate>
+          {/* Name */}
           <div className='mb-4'>
             <label
               htmlFor='name'
@@ -19,12 +20,12 @@ const SignUp = () => {
               type='text'
               name='name'
               id='name'
-              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2
-              }`}
+              className='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400'
               placeholder='Your full name'
             />
           </div>
 
+          {/* Email */}
           <div className='mb-4'>
             <label
               htmlFor='email'
@@ -36,12 +37,12 @@ const SignUp = () => {
               type='email'
               name='email'
               id='email'
-              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 'border-red-500 focus:ring-red-400' : 'border-gray-300 focus:ring-blue-400'
-              }`}
+              className='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400'
               placeholder='you@example.com'
             />
           </div>
 
+          {/* Password */}
           <div className='mb-4'>
             <label
               htmlFor='password'
@@ -53,12 +54,12 @@ const SignUp = () => {
               type='password'
               name='password'
               id='password'
-              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2  'border-red-500 focus:ring-red-400' : 'border-gray-300 focus:ring-blue-400'
-              }`}
+              className='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400'
               placeholder='At least 6 characters'
             />
           </div>
 
+          {/* Confirm Password */}
           <div className='mb-6'>
             <label
               htmlFor='confirmPassword'
@@ -70,11 +71,12 @@ const SignUp = () => {
               type='password'
               name='confirmPassword'
               id='confirmPassword'
-              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 $`}
+              className='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400'
               placeholder='Re-enter your password'
             />
           </div>
 
+          {/* Submit */}
           <button
             type='submit'
             className='w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors duration-300 font-semibold'
@@ -82,11 +84,13 @@ const SignUp = () => {
             Sign Up
           </button>
         </form>
+
+        {/* Login Link */}
         <p className='mt-4 text-center text-gray-600'>
           Already have an account?{' '}
-          <a href='/login' className='text-blue-600 hover:underline'>
+          <Link to='/login' className='text-blue-600 hover:underline'>
             Log in
-          </a>
+          </Link>
         </p>
       </div>
     </div>

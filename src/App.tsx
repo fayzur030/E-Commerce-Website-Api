@@ -4,11 +4,11 @@ import Header from './Components/Header'
 import HomePage from './Pages/HomePage'
 import AboutPage from './Pages/AboutPage'
 import ContactPage from './Pages/ContactPage'
-import LogainPage from './Pages/LogainPage'
 import Sign_Up from './Pages/Sign_Up'
 import Service from './Pages/Service'
 import ProductDetails from './Pages/ProductDetails'
 import Footer from './Components/Footer'
+import LoginPage from './Pages/LoginPage'
 
 function App() {
   const location = useLocation()
@@ -24,7 +24,7 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/contact' element={<ContactPage />} />
-          <Route path='/login' element={<LogainPage />} />
+          <Route path='/login' element={<LoginPage />} />
           <Route path='/sign-up' element={<Sign_Up />} />
           <Route path='/service' element={<Service />} />
           <Route path='product/:id' element={<ProductDetails />} />

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import type { Product } from '../Types/productType'
-import SignUpModal from '../Components/SiognUpModal'
+import SignUpModal from '../Components/LoginModal'
 
 const ProductDetails = () => {
   // const navigate = useNavigate()
