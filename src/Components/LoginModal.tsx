@@ -1,6 +1,5 @@
 import LoginPage from '../Pages/LoginPage'
 
-
 type Props = {
   isOpen: boolean
   onClose: () => void

@@ -8,23 +8,6 @@ const SignUp = () => {
           Create an Account
         </h2>
         <form noValidate>
-          {/* Name */}
-          <div className='mb-4'>
-            <label
-              htmlFor='name'
-              className='block mb-1 font-medium text-gray-700'
-            >
-              Name
-            </label>
-            <input
-              type='text'
-              name='name'
-              id='name'
-              className='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400'
-              placeholder='Your full name'
-            />
-          </div>
-
           {/* Email */}
           <div className='mb-4'>
             <label
@@ -56,23 +39,6 @@ const SignUp = () => {
               id='password'
               className='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400'
               placeholder='At least 6 characters'
-            />
-          </div>
-
-          {/* Confirm Password */}
-          <div className='mb-6'>
-            <label
-              htmlFor='confirmPassword'
-              className='block mb-1 font-medium text-gray-700'
-            >
-              Confirm Password
-            </label>
-            <input
-              type='password'
-              name='confirmPassword'
-              id='confirmPassword'
-              className='w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400'
-              placeholder='Re-enter your password'
             />
           </div>
 

@@ -24,7 +24,9 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`https://dummyjson.com/products/${id}`)
+        const response = await fetch(
+          `https://api.escuelajs.co/api/v1/products/${id}`
+        )
         const data = await response.json()
         setProduct(data)
         console.log('Product Details:', data)
@@ -46,7 +48,7 @@ const ProductDetails = () => {
           {/* ---------- Product Image Section ---------- */}
           <div className='flex-shrink-0 w-full lg:w-1/3'>
             <img
-              src={product.thumbnail}
+              src={product.images}
               alt={product.title}
               className='w-full h-64 sm:h-80 lg:h-full object-cover rounded-lg '
               // h-64 = mobile, sm:h-80 = tablet, lg:h-full = desktop
@@ -73,12 +75,8 @@ const ProductDetails = () => {
 
               {/* Category */}
               <p className='text-sm sm:text-base text-gray-500 mb-1'>
-                Category: <span className='capitalize'>{product.category}</span>
-              </p>
-
-              {/* Rating */}
-              <p className='text-sm sm:text-base text-yellow-500'>
-                ⭐ Rating: {product.rating}
+                Category:{' '}
+                <span className='capitalize'>{product.category.name}</span>
               </p>
             </div>
 

@@ -1,24 +1,40 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { Product } from '../Types/productType'
 
-type Props = {
-  product: Product
-}
+type Props = { product: Product }
+
+const fallbackImage =
+  // Smartphone1: '../../public/SP1.jpg',
+  '../../public//SP2.jpg'
+
 const ProductCart = ({ product }: Props) => {
   const navigate = useNavigate()
+  const [hovered, setHovered] = useState(false)
+
   const handleClick = () => {
     navigate(`/product/${product.id}`)
   }
+
   return (
     <div
       onClick={handleClick}
-      className='border bg-[#F8F8F6] hover:scale-[1.02] duration-300 p-4 relative rounded-lg shadow-md dark:text-black w-full  md:w-auto'
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className='border bg-[#F8F8F6] hover:scale-[1.02] duration-300 p-4 relative rounded-lg shadow-md dark:text-black w-full md:w-auto cursor-pointer'
     >
       {/* Image */}
       <img
-        src={product.thumbnail}
+        src={
+          hovered
+            ? product.images[1] || product.images[0] || fallbackImage
+            : product.images[0] || fallbackImage
+        }
         alt={product.title}
-        className='w-full h-52 object-cover'
+        className='w-full h-52 object-cover transition-transform duration-300 ease-in-out'
+        onError={(e) => {
+          e.currentTarget.src = fallbackImage
+        }}
       />
 
       {/* Content */}
@@ -27,7 +43,7 @@ const ProductCart = ({ product }: Props) => {
           {product.title}
         </h2>
         <p className='text-xs sm:text-sm text-gray-500 capitalize'>
-          {product.category}
+          {product.category.name}
         </p>
         <p className='text-gray-700 text-xs sm:text-sm mt-2 line-clamp-2'>
           {product.description}
@@ -42,12 +58,6 @@ const ProductCart = ({ product }: Props) => {
             ⭐ {product.rating}
           </span>
         </div>
-
-        {/* Button */}
-        {/* <div className='flex justify-between gap-3'>
-          <BuyNow />
-          <AddToCart />
-        </div> */}
       </div>
     </div>
   )

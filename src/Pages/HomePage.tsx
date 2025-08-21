@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { Product } from '../Types/productType'
 import ProductCart from '../Components/ProductCart'
-import CircularDemo from '../Components/Carousel'
-
+import HeroSection from './HeroSection'
 
 const HomePage = () => {
   const [product, setProduct] = useState<Product[]>([])
@@ -12,19 +11,18 @@ const HomePage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       setLoading(true)
-      const response = await fetch(`https://dummyjson.com/products?limit=100`)
+      const response = await fetch(`https://api.escuelajs.co/api/v1/products`)
       const data = await response.json()
-      setProduct(data.products)
-      // console.log('Product', data)
+      setProduct(data)
+      console.log('Product', data)
       setLoading(false)
     }
     fetchProduct()
   }, [])
   return (
     <div className='bg-[#F6F1RD] max-w-7xl mx-auto rounded-lg shadow p-4 flex-1 text-black'>
-      <section>
-        <CircularDemo />
-      </section>
+      <HeroSection />
+      <h1 className='text-center text-3xl font-semibold text-gray-600 mb-4'>Our Product</h1>
       {loading ? (
         <div className='flex justify-center mt-10'>
           {' '}
