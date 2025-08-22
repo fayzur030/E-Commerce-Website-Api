@@ -22,7 +22,9 @@ const HomePage = () => {
   return (
     <div className='bg-[#F6F1RD] max-w-7xl mx-auto rounded-lg shadow p-4 flex-1 text-black'>
       <HeroSection />
-      <h1 className='text-center text-3xl font-semibold text-gray-600 mb-4'>Our Product</h1>
+      <h1 className='text-center text-3xl font-semibold text-gray-600 mb-4'>
+        Our Product
+      </h1>
       {loading ? (
         <div className='flex justify-center mt-10'>
           {' '}

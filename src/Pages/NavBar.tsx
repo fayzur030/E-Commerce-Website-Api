@@ -80,7 +80,8 @@ const Navbar = () => {
             <Link to='/cart' className='btn btn-ghost btn-circle'>
               <ShoppingCart className='w-5 h-5' />
             </Link>
-            {/* Profile with Lucide ChevronDown */}
+    
+            {/* Profile with Lucide ArrowRight */}
             <div className='dropdown dropdown-end'>
               <label
                 tabIndex={0}
@@ -122,7 +123,27 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className='md:hidden px-4 pb-4 bg-white shadow-md'>
-          <form onSubmit={handleSearch} className='flex flex-col gap-2 mb-3'>
+          <nav className='flex flex-col gap-2 text-center'>
+            <Link to='/' onClick={() => setIsMobileMenuOpen(false)}>
+              Home
+            </Link>
+            <Link to='/about' onClick={() => setIsMobileMenuOpen(false)}>
+              About
+            </Link>
+            <Link to='/contact' onClick={() => setIsMobileMenuOpen(false)}>
+              Contact
+            </Link>
+            <Link to='/cart' onClick={() => setIsMobileMenuOpen(false)}>
+              Cart
+            </Link>
+            <Link to='/login' onClick={() => setIsMobileMenuOpen(false)}>
+              Login
+            </Link>
+            <Link to='/signup' onClick={() => setIsMobileMenuOpen(false)}>
+              Sign Up
+            </Link>
+          </nav>
+          <form onSubmit={handleSearch} className='flex flex-col gap-2 mb-3 mt-3'>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -148,26 +169,6 @@ const Navbar = () => {
               Search
             </button>
           </form>
-          <nav className='flex flex-col gap-2'>
-            <Link to='/' onClick={() => setIsMobileMenuOpen(false)}>
-              Home
-            </Link>
-            <Link to='/about' onClick={() => setIsMobileMenuOpen(false)}>
-              About
-            </Link>
-            <Link to='/contact' onClick={() => setIsMobileMenuOpen(false)}>
-              Contact
-            </Link>
-            <Link to='/cart' onClick={() => setIsMobileMenuOpen(false)}>
-              Cart
-            </Link>
-            <Link to='/login' onClick={() => setIsMobileMenuOpen(false)}>
-              Login
-            </Link>
-            <Link to='/signup' onClick={() => setIsMobileMenuOpen(false)}>
-              Sign Up
-            </Link>
-          </nav>
         </div>
       )}
     </header>

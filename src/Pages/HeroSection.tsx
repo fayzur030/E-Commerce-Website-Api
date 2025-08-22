@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import hero1 from '../assets/hero2.jpg'
-import hero2 from '../assets/hero3.webp'
-import hero3 from '../assets/Hero.jpg'
-import hero4 from '../assets/hero1.jpg'
+import heroImage1 from '../assets/heroImage1.jpg'
+import heroImage2 from '../assets/heroImage2.avif'
+import heroImage3 from '../assets/heroImage3.png'
+import heroImage4 from '../assets/heroImage4.png'
+
 
 const Carousel: React.FC = () => {
-  const slides = [hero3, hero1, hero2, hero4]
+  const slides = [heroImage1, heroImage2, heroImage3, heroImage4]
   const [current, setCurrent] = useState(0)
 
   const prevSlide = () =>
@@ -19,7 +20,7 @@ const Carousel: React.FC = () => {
       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
     }, 5000) // 5 seconds delay
     return () => clearInterval(interval)
-  }, [])
+  }, [slides.length])
 
   return (
     <div className='relative w-full h-96 overflow-hidden mb-4 shadow-lg rounded-md'>

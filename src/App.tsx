@@ -9,10 +9,11 @@ import Service from './Pages/Service'
 import ProductDetails from './Pages/ProductDetails'
 import Footer from './Components/Footer'
 import LoginPage from './Pages/LoginPage'
+import CheckOutPage from './Pages/CheckOutPage'
 
 function App() {
   const location = useLocation()
-  const hideHeaderRoutes = ['/login', '/sign-up']
+  const hideHeaderRoutes = ['/login', '/signup']
   const shouldHideHeader = hideHeaderRoutes.includes(location.pathname)
 
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/signup' element={<Sign_Up />} />
           <Route path='/service' element={<Service />} />
           <Route path='product/:id' element={<ProductDetails />} />
+          <Route path='checkout/:id' element={<CheckOutPage />} />
         </Routes>
         <Outlet />
       </main>
