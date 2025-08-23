@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ShoppingCart, User, Menu, X, ArrowRight } from 'lucide-react'
 import logo from '../assets/logo.png'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../firebase.init'
+import { signOut } from 'firebase/auth'
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -15,8 +18,19 @@ const Navbar = () => {
     navigate(`/search?query=${searchTerm}&category=${category}`)
     setIsMobileMenuOpen(false)
   }
-
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
+
+  const [user] = useAuthState(auth)
+
+  // 🔹 Sign out function
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth)
+      navigate('/')
+    } catch (error) {
+      console.error('Error signing out:', error)
+    }
+  }
 
   return (
     <header className='bg-white shadow-sm sticky top-0 z-50'>
@@ -80,8 +94,8 @@ const Navbar = () => {
             <Link to='/cart' className='btn btn-ghost btn-circle'>
               <ShoppingCart className='w-5 h-5' />
             </Link>
-    
-            {/* Profile with Lucide ArrowRight */}
+
+            {/* Profile dropdown */}
             <div className='dropdown dropdown-end'>
               <label
                 tabIndex={0}
@@ -94,12 +108,21 @@ const Navbar = () => {
                 tabIndex={0}
                 className='menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-40'
               >
-                <li>
-                  <Link to='/login'>Login</Link>
-                </li>
-                <li>
-                  <Link to='/signup'>Sign Up</Link>
-                </li>
+                {!user && (
+                  <>
+                    <li>
+                      <Link to='/signup'>Sign Up</Link>
+                    </li>
+                    <li>
+                      <Link to='/signin'>Sign In</Link>
+                    </li>
+                  </>
+                )}
+                {user && (
+                  <li>
+                    <button onClick={handleSignOut}>Sign out</button>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
@@ -136,14 +159,34 @@ const Navbar = () => {
             <Link to='/cart' onClick={() => setIsMobileMenuOpen(false)}>
               Cart
             </Link>
-            <Link to='/login' onClick={() => setIsMobileMenuOpen(false)}>
-              Login
-            </Link>
-            <Link to='/signup' onClick={() => setIsMobileMenuOpen(false)}>
-              Sign Up
-            </Link>
+            {!user && (
+              <>
+                <Link to='/signup' onClick={() => setIsMobileMenuOpen(false)}>
+                  Sign Up
+                </Link>
+                <Link to='/signin' onClick={() => setIsMobileMenuOpen(false)}>
+                  Sign In
+                </Link>
+              </>
+            )}
+            {user && (
+              <button
+                onClick={() => {
+                  handleSignOut()
+                  setIsMobileMenuOpen(false)
+                }}
+                className='btn btn-ghost'
+              >
+                Sign out
+              </button>
+            )}
           </nav>
-          <form onSubmit={handleSearch} className='flex flex-col gap-2 mb-3 mt-3'>
+
+          {/* Mobile Search */}
+          <form
+            onSubmit={handleSearch}
+            className='flex flex-col gap-2 mb-3 mt-3'
+          >
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}

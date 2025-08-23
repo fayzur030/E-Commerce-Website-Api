@@ -13,11 +13,8 @@ const SignUp: React.FC = () => {
   useEffect(() => {
     if (user) {
       navigate('/checkout')
-    }
-  }, [user, navigate])
-  useEffect(() => {
-    if (user) {
-      navigate('/') // Home page
+    } else {
+      navigate('/signup')
     }
   }, [user, navigate])
 
@@ -91,10 +88,10 @@ const SignUp: React.FC = () => {
         <p className='mt-6 text-center text-gray-600'>
           Already have an account?{' '}
           <Link
-            to='/login'
+            to='/signin'
             className='font-medium text-purple-600 hover:underline hover:text-purple-700'
           >
-            Log in
+            Sign in
           </Link>
         </p>
       </div>
